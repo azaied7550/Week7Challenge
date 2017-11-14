@@ -7,10 +7,11 @@
     <body>
     <div class="container">
     <div th:replace="fragments/mainpage::navclass">This page has a navbar</div>
-    <h4 th:inline="text">Hi, <span class="text-success" sec:authentication="name"></span>, we're really glad you logged in!</h4>
+  <div class="container"> <h4 th:inline="text">Hi, <span class="text-success" sec:authentication="name"></span>, we're really glad you logged in!</h4>
     <div th:include="fragments/mainpage :: everydiv">This text will include the containing div tag. It works counter-intuitively, but it does work.</div>
 
     <span class="text-danger">This should show as red.</span>
+  </div>
         <div th:replace="fragments/mainpage :: footer" style="text-align:center;"></div>
 
     </div>

@@ -7,8 +7,10 @@
     <body>
     <div class="container">
     <div th:replace="fragments/mainpage::navclass">This page has a navbar</div>
+ <div class="container">
     <h4 th:inline="text">Hi, <span class="text-success" sec:authentication="name"></span>, we're really glad you logged in!</h4>
     <div th:replace="fragments/mainpage :: everydiv">This will display with every div's information</div>
+    </div>
         <div th:replace="fragments/mainpage :: footer" style="text-align:center;"></div>
 
     </div>
