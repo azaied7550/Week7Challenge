@@ -29,7 +29,7 @@
 </strong></mark>
     <input type="text" id="username" placeholder="Username" th:field="*{username}"/><br/><br/>
     <p class="col-md-2"></p><label class="col-md-4">Password</label><strong>
-    <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
+    <span class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
 </strong>
     <input type="password" id="password" placeholder="Password" th:field="*{password}"/><br/><br/>
 
