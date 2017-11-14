@@ -15,8 +15,7 @@ public class UserData {
     private long id;
 
     @Email
-    @NotEmpty
-    private String email;
+        private String email;
 
     @NotEmpty
     private String password;
@@ -29,6 +28,7 @@ public class UserData {
 
     private boolean enabled;
 
+    @NotEmpty
     private String username;
 
 
