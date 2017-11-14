@@ -18,10 +18,13 @@ public class UserData {
     @NotEmpty
     private String email;
 
+    @NotEmpty
     private String password;
 
+    @NotEmpty
     private String firstName;
 
+    @NotEmpty
     private String lastName;
 
     private boolean enabled;
