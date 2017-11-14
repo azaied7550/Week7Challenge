@@ -15,5 +15,6 @@
                <h4 th:inline="text">Hi, <span class="text-success" sec:authentication="name"></span>, we're really glad you logged in!</h4>
              <div th:replace="fragments/mainpage :: everydiv">This text will be replaced where a th:replace is used. </div>
        </div>
+        <div th:replace="fragments/mainpage :: footer"></div>
     </body>
 </html>

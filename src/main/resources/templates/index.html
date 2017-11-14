@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity4">
     <head th:fragment="headstuff">
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="/img/favicon.ico">
@@ -34,7 +34,7 @@
                                 <img src="/img/new_logo.png" alt="Creative Tim Logo">
                             </div>
                             <div class="brand">
-                                Sample Login App
+                                <h4 th:inline="text">Hi, <span class="text-success" sec:authentication="name"></span>, we're really glad you logged in!</h4>
                             </div>
                         </div>
                     </a>
@@ -47,6 +47,14 @@
                             <i class="fa fa-user"></i>
                                 Login
                             </a>
+                        </li>
+
+                        <li>
+                            <a href="/register">
+                                <i class="fa fa-user"></i>
+                                Registration
+                            </a>
+
                         </li>
                         <li>
                             <a href="/pageone">
@@ -305,6 +313,7 @@
                 </div>
             </footer>
         </div>
+
 
     </body>
     <script src="/js/jquery-1.10.2.js" type="text/javascript"></script>

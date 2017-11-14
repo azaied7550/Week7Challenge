@@ -30,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 //I have a custom login form, but why can't I see my CSS?
-                .antMatchers("/css/**","/js/**","/img/**","/h2-console/**").permitAll()
+                .antMatchers("/css/**","/js/**","/img/**","/h2-console/**","/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()

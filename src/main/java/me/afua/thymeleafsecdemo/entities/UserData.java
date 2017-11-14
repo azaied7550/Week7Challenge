@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -27,9 +28,11 @@ public class UserData {
 
     private String username;
 
+
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name="user_id"),inverseJoinColumns = @JoinColumn(name="role_id"))
-    private Set<UserRole> roles;
+    private Collection<UserRole> roles;
 
     public long getId() {
         return id;
@@ -87,11 +90,11 @@ public class UserData {
         this.username = username;
     }
 
-    public Set<UserRole> getRoles() {
+    public Collection<UserRole> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<UserRole> roles) {
+    public void setRoles(Collection<UserRole> roles) {
         this.roles = roles;
     }
 }
