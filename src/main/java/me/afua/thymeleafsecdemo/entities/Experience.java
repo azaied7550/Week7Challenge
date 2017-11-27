@@ -1,8 +1,6 @@
 package me.afua.thymeleafsecdemo.entities;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.jetbrains.annotations.NotNull;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

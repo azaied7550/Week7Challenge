@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity4">
+<head th:replace="index::headstuff">
+    <meta charset="UTF-8"/>
+    <title>Page Three</title>
+</head>
+    <body>
+    <div class="container">
+    <div th:replace="fragments/mainpage::navclass">This page has a navbar</div>
+  <div class="container"> <h4 th:inline="text">Hi, <span class="text-success" sec:authentication="name"></span>, we're really glad you logged in!</h4>
+
+
+  </div>
+        <h5> Add Skills </h5>
+
+        <form autocomplete="off" action="#" th:action="@{/newSkill}" th:object="${skill}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <p class="col-md-2"></p> <label class="col-md-4">Skill</label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('skillName')}" th:errors="*{skillName}">Skill Name Error</span>
+        </strong>
+            <input type="text" id="skillName" placeholder="Skill Name" th:field="*{skillName}"/><br/><br/>
+
+            <p class="col-md-2"></p> <label class="col-md-4">Skill Level</label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('skillLevel')}" th:errors="*{skillLevel}">Skill Level Error</span>
+        </strong>
+            <input type="text" id="skillLevel" placeholder="SkillLevel" th:field="*{skillLevel}"/><br/><br/>
+
+            <p class="col-md-6"></p><button type="submit" class="btn btn-default"><a class="navbar brand" href="/addSkill">Add Skills</a></button>
+
+
+            <a type="submit" class="btn btn-default" href="/displayList" >Finish</a>
+
+
+
+
+            <!--<a th:href="@{/detail/{id} (id=${pet.id})}">  Details|</a>-->
+        </form>
+
+    </div>
+    </body>
+</html>

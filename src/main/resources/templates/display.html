@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity4">
+<head th:replace="index::headstuff">
+    <meta charset="UTF-8"/>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<div class="container">
+<div th:replace="fragments/mainpage::navclass"> </div>
+
+
+<h4> New User Registration</h4>
+
+    <table>
+        <tr>
+            <th>First Name </th>
+            <th>Last Name</th>
+
+        </tr>
+
+        <tr th:each="user : ${userData}">
+            <td th:text="${userData.firstname}"></td>
+            <td th:text="${userData.lastname}"></td>
+
+
+            <td>
+                <!--<a th:href="@{/update/{id} (id=${pet.id})}"> Update  | </a>-->
+                <!--<a th:href="@{/detail/{id} (id=${pet.id})}">  Details|</a>-->
+                <!--<a th:href="@{/delete/{id} (id=${pet.id})}"> Delete </a>-->
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+</body>
+</html>

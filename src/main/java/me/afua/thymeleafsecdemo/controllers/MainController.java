@@ -1,9 +1,7 @@
 package me.afua.thymeleafsecdemo.controllers;
 
 import me.afua.thymeleafsecdemo.UserService;
-import me.afua.thymeleafsecdemo.entities.UserData;
-import me.afua.thymeleafsecdemo.entities.UserEducation;
-import me.afua.thymeleafsecdemo.entities.UserRole;
+import me.afua.thymeleafsecdemo.entities.*;
 import me.afua.thymeleafsecdemo.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,6 +68,12 @@ public class MainController {
         return "registration";
     }
 
+    @GetMapping("/addE")
+    public String petForm (Model model){
+        model.addAttribute("education", new UserEducation());
+        return "education";
+    }
+
 //    @PostMapping("/register")
 //    public String processWorkPage(@Valid UserData user, UserRole role, BindingResult bindingResult,
 //                                  HttpServletRequest getRole) {
@@ -122,35 +126,108 @@ public String processWorkPage(@Valid UserData user, UserRole role, BindingResult
     public String getEducationPage(Model model) {
         model.addAttribute(new UserEducation());
         model.addAttribute("pagenumber","3");
-        return "createresume";
+        return "education";
     }
-//@RequestMapping ("/newREsume")
-//public String processResume(Model model){
-//        return"createresume";
-//    }
-@RequestMapping("/newResume")
-public String newResume(Model model){
+
+    @RequestMapping("/newResume")
+    public String newResume(Model model){
         UserEducation userEducation= new UserEducation();
         model.addAttribute("education", userEducation);
-        return "createresume";
-}
+        return "education";
+    }
     @PostMapping("/newResume")
     public String processEducationPage(@Valid UserEducation education, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "createresume";
+            return "education";
         }
         educationRepository.save(education);
         model.addAttribute(new UserEducation());
 
-        return "createresume";
+        return "education";
     }
 //    @RequestMapping("/newResume")
 //    public String showResume(Model model)
 //    {
 //        model.addAttribute("title","Third Page");
 //
-//        return "createresume";
+//        return "education";
 //    }
 
+    @GetMapping("/newExperience")
+    public String getExperience(Model model) {
+        model.addAttribute(new Experience());
+        //model.addAttribute("pagenumber","3");
+        return "experience";
+    }
 
+    @RequestMapping("/newExperience")
+    public String newExperience(Model model){
+        Experience experience= new Experience();
+        model.addAttribute("experience", experience);
+        return "experience";
+    }
+    @PostMapping("/newExperience")
+    public String processExperience(@Valid Experience experience, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "experience";
+        }
+        experienceRepository.save(experience);
+        model.addAttribute(new Experience());
+
+        return "experience";
+    }
+    @GetMapping("/addExperience")
+    public String experienceForm (Model model){
+        model.addAttribute("experience", new Experience());
+        return "experience";
+    }
+
+    //// Skills
+    @GetMapping("/newSkill")
+    public String getSkill(Model model) {
+        model.addAttribute(new Skill());
+        //model.addAttribute("pagenumber","3");
+        return "skill";
+    }
+
+    @RequestMapping("/newSkill")
+    public String newSkill(Model model){
+        Skill skill= new Skill();
+        model.addAttribute("skill", skill);
+        return "skill";
+    }
+    @PostMapping("/newSkill")
+    public String processSkill(@Valid Skill skill, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "skill";
+        }
+        skillRepository.save(skill);
+        model.addAttribute(new Skill());
+
+        return "skill";
+    }
+    @GetMapping("/addSkill")
+    public String skillForm (Model model){
+        model.addAttribute("skill", new Skill());
+        return "skill";
+    }
+
+    @RequestMapping("/detail/{id}")
+    public String displayResume(@PathVariable ("id") long id, Model model){
+        model.addAttribute("user", userRepository.findOne(id));
+     model.addAttribute("userEducation", userRepository.findOne(id));
+//        model.addAttribute("userExperience", experienceRepository.findOne(id));
+//        model.addAttribute("userSkill", skillRepository.findOne(id));
+        return "display";
+    }
+
+    @RequestMapping("/displayList")
+    public String listResumes (Model model){
+        model.addAttribute("user", userRepository.findAll());
+        model.addAttribute("education", educationRepository.findAll());
+        model.addAttribute("experience", experienceRepository.findAll());
+        model.addAttribute("skill", skillRepository.findAll());
+
+        return "displaylist";
+    }
 }

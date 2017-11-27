@@ -35,6 +35,7 @@ public class UserData {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name="user_id"),inverseJoinColumns = @JoinColumn(name="role_id"))
+
     private Collection<UserRole> roles;
 
     public long getId() {

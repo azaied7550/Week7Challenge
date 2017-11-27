@@ -8,4 +8,5 @@ public interface EducationRepository extends CrudRepository<UserEducation, Long>
     UserEducation findByInstitution(String institution);
     UserEducation findByMajor(String Major);
 
+
 }

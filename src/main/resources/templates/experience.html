@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity4">
+<head th:replace="index::headstuff">
+    <meta charset="UTF-8"/>
+    <title>Page Three</title>
+</head>
+    <body>
+    <div class="container">
+    <div th:replace="fragments/mainpage::navclass">This page has a navbar</div>
+  <div class="container"> <h4 th:inline="text">Hi, <span class="text-success" sec:authentication="name"></span>, we're really glad you logged in!</h4>
+
+
+  </div>
+        <h5> Add Experience </h5>
+
+        <form autocomplete="off" action="#" th:action="@{/newExperience}" th:object="${experience}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <p class="col-md-2"></p> <label class="col-md-4">Employer</label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('employer')}" th:errors="*{employer}">Employer Error</span>
+        </strong>
+            <input type="text" id="employer" placeholder="employer" th:field="*{employer}"/><br/><br/>
+
+            <p class="col-md-2"></p> <label class="col-md-4">Position</label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('position')}" th:errors="*{position}">Major Error</span>
+        </strong>
+            <input type="text" id="major" placeholder="Position" th:field="*{position}"/><br/><br/>
+
+            <p class="col-md-2"></p> <label class="col-md-4">Start Date </label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">Experience Date  Error</span>
+        </strong>
+            <input type="text" id="startDate" placeholder="Mon/Year" th:field="*{startDate}"/><br/><br/>
+
+            <p class="col-md-2"></p> <label class="col-md-4">End Date (Mon/Year)</label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">Experience End  Error</span>
+        </strong>
+            <input type="text" id="endDate" placeholder="Mon/Year" th:field="*{endDate}"/><br/><br/>
+
+            <p class="col-md-6"></p><button type="submit" class="btn btn-default"><a class="navbar brand" href="/addExperience">Add Experience</a></button>
+
+
+            <a type="submit" class="btn btn-default" href="/newSkill" >Add Skills</a>
+
+
+        </form>
+
+    </div>
+    </body>
+</html>

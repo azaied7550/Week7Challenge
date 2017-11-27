@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity4">
+<head th:replace="index::headstuff">
+    <meta charset="UTF-8"/>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<div class="container">
+<div th:replace="fragments/mainpage::navclass"> </div>
+
+
+    <h4 th:inline="text">Hi, <span class="text-success" sec:authentication="name"></span>!</h4>
+
+<br/><br/>
+
+
+    <table>
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <tr>
+            <th>First Name </th>
+            <th>Last Name</th>
+            <th>Email</th>
+
+        </tr>
+
+
+        <tr th:each="user : ${user}">
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.email}"></td>
+
+        </tr>
+    </table>
+
+    <hr>
+    <br/><br/>
+    <table>
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <tr>
+            <th>Institution</th>
+            <th>Degree</th>
+            <th>Major</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+
+
+        </tr>
+
+        <tr th:each="education : ${education}">
+            <td th:text="${education.institution}"><br /></td>
+            <td th:text="${education.degree}"><br /></td>
+            <td th:text="${education.Major}"><br /></td>
+            <td th:text="${education.educationStart}"><br /></td>
+            <td th:text="${education.educationEnd}"><br /></td>
+
+        </tr>
+    </table>
+    <hr>
+    <br/><br/>
+    <table>
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <tr>
+            <th>Employer</th>
+            <th>Position</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+
+
+        </tr>
+        <tr th:each="experience : ${experience}">
+            <td th:text="${experience.employer}"><br /></td>
+            <td th:text="${experience.position}"><br /></td>
+            <td th:text="${experience.startDate}"><br /></td>
+            <td th:text="${experience.endDate}"><br /></td>
+
+            <td>
+                <!--<a th:href="@{/update/{id} (id=${pet.id})}"> Update  | </a>-->
+                <!--<a th:href="@{/detail/{id} (id=${pet.id})}">  Details|</a>-->
+                <!--<a th:href="@{/delete/{id} (id=${pet.id})}"> Delete </a>-->
+            </td>
+        </tr>
+    </table>
+
+    <br/><br/>
+
+    <hr>
+    <table>
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <col width="180">
+        <tr>
+            <th>Skill Name </th>
+            <th>Skill Level</th>
+
+
+        </tr>
+
+
+        <tr th:each="skill : ${skill}">
+            <td th:text="${skill.skillName}"></td>
+            <td th:text="${skill.skillLevel}"></td>
+
+
+            <td>
+                <!--<a th:href="@{/update/{id} (id=${pet.id})}"> Update  | </a>-->
+                <!--<a th:href="@{/detail/{id} (id=${pet.id})}">  Details|</a>-->
+                <!--<a th:href="@{/delete/{id} (id=${pet.id})}"> Delete </a>-->
+            </td>
+        </tr>
+    </table>
+
+</div>
+</div>
+</body>
+</html>
