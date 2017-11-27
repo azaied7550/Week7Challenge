@@ -237,7 +237,7 @@ public String processWorkPage(@Valid UserData user, UserRole role, BindingResult
         model.addAttribute("experienceList", experienceRepository.findAll());
         model.addAttribute("skillList", skillRepository.findAll());
         model.addAttribute("userList", userRepository.findAll());
-        return "results";
+        return "result";
     }
 
 }
