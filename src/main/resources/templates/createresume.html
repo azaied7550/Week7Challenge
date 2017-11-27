@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity4">
+<head th:replace="index::headstuff">
+    <meta charset="UTF-8"/>
+    <title>Page Three</title>
+</head>
+    <body>
+    <div class="container">
+    <div th:replace="fragments/mainpage::navclass">This page has a navbar</div>
+  <div class="container"> <h4 th:inline="text">Hi, <span class="text-success" sec:authentication="name"></span>, we're really glad you logged in!</h4>
+
+
+  </div>
+        <h5> Add Education </h5>
+
+        <form autocomplete="off" action="#" th:action="@{/newResume}" th:object="${userEducation}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <p class="col-md-2"></p> <label class="col-md-4">Institution</label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('institution')}" th:errors="*{institution}">Institution Error</span>
+        </strong>
+            <input type="text" id="institution" placeholder="Institution" th:field="*{institution}"/><br/><br/>
+
+            <p class="col-md-2"></p> <label class="col-md-4">Major</label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('major')}" th:errors="*{major}">Major Error</span>
+        </strong>
+            <input type="text" id="major" placeholder="Major" th:field="*{major}"/><br/><br/>
+
+            <p class="col-md-2"></p> <label class="col-md-4">Degree</label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}">Degree Error</span>
+        </strong>
+            <input type="text" id="degree" placeholder="Degree" th:field="*{degree}"/><br/><br/>
+
+
+            <p class="col-md-2"></p> <label class="col-md-4">Start Year</label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('educationStart')}" th:errors="*{educationStart}">Education Date  Error</span>
+        </strong>
+            <input type="text" id="educationStart" placeholder="Start Year" th:field="*{educationStart}"/><br/><br/>
+
+            <p class="col-md-2"></p> <label class="col-md-4">Completion Year</label><strong>
+            <span class="alert alert-danger" th:if="${#fields.hasErrors('educationEnd')}" th:errors="*{educationEnd}">Education End  Error</span>
+        </strong>
+            <input type="text" id="educationEnd" placeholder="Start Year" th:field="*{educationEnd}"/><br/><br/>
+
+
+
+            <p class="col-md-6"></p><button type="submit" class="btn btn-default"> Add Education</button>
+
+            <a type="submit" class="btn btn-default" href="experience" >Next</a>
+
+
+        </form>
+
+    </div>
+    </body>
+</html>
