@@ -115,12 +115,12 @@ public String processWorkPage(@Valid UserData user, UserRole role, BindingResult
     return "login";
 }
 
-    @RequestMapping("/pagetwo")
-    public String showPageTwo(Model model)
+    @RequestMapping("/search")
+    public String showSearch(Model model)
     {
-        model.addAttribute("title","Second Page");
-        model.addAttribute("pagenumber","2");
-        return "pagetwo";
+//        model.addAttribute("title","Second Page");
+//        model.addAttribute("pagenumber","2");
+        return "search";
     }
     @GetMapping("/newResume")
     public String getEducationPage(Model model) {
@@ -230,4 +230,14 @@ public String processWorkPage(@Valid UserData user, UserRole role, BindingResult
 
         return "displaylist";
     }
+
+    @RequestMapping("/result")
+    public String historyPage(Model model) {
+        model.addAttribute("eduList", educationRepository.findAll());
+        model.addAttribute("experienceList", experienceRepository.findAll());
+        model.addAttribute("skillList", skillRepository.findAll());
+        model.addAttribute("userList", userRepository.findAll());
+        return "results";
+    }
+
 }
